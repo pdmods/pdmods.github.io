@@ -6,7 +6,7 @@ This website is just a quick proof of concept to show off a few little mods for 
 
 ### What is Included Here
 - Retro looking web page, with fullscreen.
-- Big moderator-like chat box.
+- Bigger chat box.
 - Lit-up darkroom.
 - A couple custom songs.
 - Cleaner treehouse look.
