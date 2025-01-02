@@ -4,6 +4,14 @@ This website is just a quick proof of concept to show off a few little mods for 
 
 ---
 
+### What is Included Here
+- Retro looking web page, with fullscreen.
+- Big moderator-like chat box.
+- A couple custom songs.
+- Cleaner treehouse look.
+
+---
+
 #### Good to Know
 
 - **Flash is Old:** Flash is super old tech. Anything that uses it (including the stuff to run it) is a big security risk, even if nothing seems harmful.
