@@ -8,7 +8,7 @@ This website is just a quick proof of concept to show off a few little mods for 
 
 - **Flash is Old:** Flash is super old tech. Anything that uses it (including the stuff to run it) is a big security risk, even if nothing seems harmful.
 
-- **Everything is tracked and permanently stored:** Every time you log in your login time and IP are saved permanently in the Project Pandanda database. Every time you send a message, not only that it is permanently recorded but someone seems to actually read this chats almost every morning.
+- **Everything is tracked and permanently stored:** Every time you log in your login time and IP are saved permanently in the Project Pandanda database. Every time you send a message, not only that it is permanently recorded but it seems that they are actually actively reading the messages.
 
 - **Modding Risks:** If they catch you with a modded client, even if it is harmless, they will ban you. Be careful! <3
 
