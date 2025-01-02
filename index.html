@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pandanda Mod</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+
+    .crt-container {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(min(100vw, (4/3) * 100vh));
+      height: calc(min(100vh, (3/4) * 100vw));
+      background: #d3cbc0;
+      border-radius: 40px;
+      box-shadow:
+        inset 0 0 20px rgba(0,0,0,0.6),
+        0 0 60px rgba(0,0,0,0.9),
+        0 30px 60px rgba(0,0,0,0.7);
+      overflow: hidden;
+    }
+
+    .crt-screen {
+      position: absolute;
+      top: 10%;
+      left: 5%;
+      right: 5%;
+      bottom: 10%;
+      border: 8px solid #000;
+      border-radius: 20px;
+      background: #000;
+      box-shadow:
+        inset 0 0 25px rgba(0,0,0,0.9),
+        0 10px 20px rgba(0,0,0,0.7);
+      overflow: hidden;
+    }
+
+    .fullscreen-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .fullscreen-wrapper embed {
+      display: block;
+      width: 100%;
+      height: 100%;
+      transform: translateZ(-30px) rotateX(1.5deg) rotateY(-1.5deg);
+      transform-origin: center;
+    }
+
+    .screen-overlays {
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .scan-lines {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.02) 0px,
+        rgba(255,255,255,0.02) 2px,
+        rgba(0,0,0,0.02) 2px,
+        rgba(0,0,0,0.02) 4px
+      );
+    }
+    .glare {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(255,255,255,0.07),
+        rgba(255,255,255,0)
+      );
+      transform: skewX(-15deg);
+      transform-origin: left top;
+    }
+
+    .crt-vent {
+      position: absolute;
+      bottom: 4%;
+      left: 5%;
+      width: 20%;
+      height: 2%;
+      background: repeating-linear-gradient(
+        to right,
+        #999 0px,
+        #999 2px,
+        transparent 2px,
+        transparent 4px
+      );
+    }
+
+    .crt-buttons {
+      position: absolute;
+      bottom: 3%;
+      right: 5%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .crt-led {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.3),
+        0 0 4px rgba(0,0,0,0.5);
+    }
+    .led-green {
+      background: #0f0;
+      box-shadow:
+        0 0 6px #0f0,
+        inset 0 1px 1px rgba(255,255,255,0.3),
+        0 0 4px rgba(0,0,0,0.5);
+    }
+    .led-orange {
+      background: orange;
+      box-shadow:
+        0 0 6px orange,
+        inset 0 1px 1px rgba(255,255,255,0.3),
+        0 0 4px rgba(0,0,0,0.5);
+    }
+    .led-off {
+      background: #444;
+    }
+
+    .crt-power-button {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #666;
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.4),
+        0 2px 4px rgba(0,0,0,0.5);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .crt-power-button:hover {
+      transform: scale(1.1);
+    }
+    .crt-power-button::before {
+      content: "⤢";
+      color: #fff;
+      font-size: 18px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .exit-fullscreen-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-family: sans-serif;
+      font-weight: bold;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.4),
+        0 2px 4px rgba(0,0,0,0.5);
+      z-index: 2;
+    }
+    .exit-fullscreen-btn::before {
+      content: "X";
+      font-size: 16px;
+    }
+    .exit-fullscreen-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .postit-link {
+      position: absolute;
+      top: 0;
+      text-decoration: none;
+      font-weight: bold;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 110px;
+      height: 70px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+      z-index: 9999;
+      transform-origin: center center;
+    }
+    .postit1 {
+      left: 15%;
+      background: #ffe8a8;
+      transform: rotate(-4deg);
+    }
+    .postit2 {
+      left: 35%;
+      background: #ffddee;
+      transform: rotate(3deg);
+    }
+    .postit3 {
+      left: 55%;
+      background: #dcffd9;
+      transform: rotate(-2deg);
+    }
+
+    .flash-fallback {
+      position: absolute;
+      top: 0; 
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #0e2b85;
+      color: #fff;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .flash-fallback a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .flash-fallback b u {
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .flash-fallback b u:hover {
+      color: #ff0;    }
+  </style>
+</head>
+<body>
+
+  <div class="crt-container">
+
+    <a href="/" class="postit-link postit1">Pandanda</a>
+    <a href="https://github.com/pdmods/pdmods.github.io" class="postit-link postit2" target="_blank">Info</a>
+         <a href="https://github.com/pdmods/guide" class="postit-link postit3" target="_blank">Guide</a>
+
+    <div class="crt-screen">
+      <div class="fullscreen-wrapper" id="fsWrapper">
+        <embed
+          src="pandanda.swf"
+          id="pdswf"
+          name="pandanda"
+          width="100%"
+          height="100%"
+          quality="high"
+          allowScriptAccess="sameDomain"
+          type="application/x-shockwave-flash"
+          wmode="transparent"
+        />
+
+        <div class="flash-fallback" id="flashFallback">
+          <p>
+            Download the
+            <a href="https://github.com/pdmods/pdmods.github.io/releases/download/1/client.zip"><b><u>Client</u></b></a>
+            or
+            <a href="https://github.com/radubirsan/FlashBrowser/releases" target="_blank"><b><u>Flash Browser</u></b></a>
+            to play.
+          </p>
+        </div>
+
+        <div class="exit-fullscreen-btn" id="exitFsBtn"></div>
+      </div>
+
+      <div class="screen-overlays">
+        <div class="scan-lines"></div>
+        <div class="glare"></div>
+      </div>
+    </div>
+
+    <div class="crt-vent"></div>
+
+    <div class="crt-buttons">
+      <div class="crt-led led-green"></div>
+      <div class="crt-led led-orange"></div>
+      <div class="crt-led led-off"></div>
+      <div class="crt-power-button" id="fullscreenBtn"></div>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const fsWrapper = document.getElementById('fsWrapper');
+      const powerButton = document.getElementById('fullscreenBtn');
+      const exitFsBtn = document.getElementById('exitFsBtn');
+      const flashEmbed = document.getElementById('pdswf');
+      const flashFallback = document.getElementById('flashFallback');
+
+      const flashSupported = !!(
+        (navigator.plugins && navigator.plugins["Shockwave Flash"]) ||
+        (navigator.mimeTypes && navigator.mimeTypes["application/x-shockwave-flash"])
+      );
+
+      if (flashSupported) {
+        flashEmbed.style.display = 'block';
+        flashFallback.style.display = 'none';
+      } else {
+        flashEmbed.style.display = 'none';
+        flashFallback.style.display = 'flex';
+      }
+
+      powerButton.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+          if (fsWrapper.requestFullscreen) {
+            fsWrapper.requestFullscreen();
+          } else if (fsWrapper.webkitRequestFullscreen) {
+            fsWrapper.webkitRequestFullscreen();
+          } else if (fsWrapper.msRequestFullscreen) {
+            fsWrapper.msRequestFullscreen();
+          } else {
+            alert('Fullscreen not supported on this browser.');
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+          }
+        }
+      });
+
+      exitFsBtn.addEventListener('click', () => {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      });
+
+      function handleFsChange() {
+        if (document.fullscreenElement) {
+          exitFsBtn.style.display = 'flex'; 
+        } else {
+          exitFsBtn.style.display = 'none';
+        }
+      }
+
+      document.addEventListener('fullscreenchange', handleFsChange);
+      document.addEventListener('webkitfullscreenchange', handleFsChange);
+      document.addEventListener('mozfullscreenchange', handleFsChange);
+      document.addEventListener('MSFullscreenChange', handleFsChange);
+    });
+  </script>
+</body>
+</html>

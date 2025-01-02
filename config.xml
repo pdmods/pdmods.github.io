@@ -1,0 +1,15 @@
+<!-- 
+    :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    Client side connection configuration 
+    For more details about the external configuration file check the 
+    client API documentation.
+    :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    
+    www.smartfoxserver.com/docs/
+    
+-->
+<SmartFoxClient>
+    <ip>45.134.39.160</ip>
+    <port>42069</port>
+    <debug>true</debug>
+</SmartFoxClient>

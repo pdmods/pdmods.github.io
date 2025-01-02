@@ -1,0 +1,64 @@
+<FAQ>
+    <QUESTION>
+        <TITLE>get Elite Membership?</TITLE>
+        <SUBTITLE>Free-To-Play</SUBTITLE>
+		<ANSWER>Project Pandanda is free-to-play! Your panda is already an Elite Member. Any additional in-game upgrades can be purchased with Pandanda coins. There are no perks that you can get with real money.</ANSWER>    
+	</QUESTION>
+    <QUESTION>
+        <TITLE>access User Panel?</TITLE>
+        <SUBTITLE>User Panel</SUBTITLE>
+		<ANSWER>You can find the User Panel button on your player card next to your coins amount. There, you can change your playercard mood, BFF, or sweetheart another Panda, and access your VIP settings to customize your name and chat bubble.</ANSWER>    
+	</QUESTION>
+    <QUESTION>
+        <TITLE>become a VIP?</TITLE>
+        <SUBTITLE>VIP Panda</SUBTITLE>
+        <ANSWER>You can buy VIP from your User Panel! You can find the User Panel button on your player card next to your coins amount.
+Being a VIP Panda gives you a variety of great perks, such as:
+• Changing your Panda name's color, adding a glow to it, and changing your chat bubble's color and text
+• Getting access to the VIP Catalog where you can buy exclusive clothes, furniture and companion
+• Store up to 10 saved outfits instead of 5
+• Having a VIP badge on your player card</ANSWER>
+    </QUESTION>
+	<QUESTION>
+        <TITLE>get new quests?</TITLE>
+        <SUBTITLE>Quests</SUBTITLE>
+        <ANSWER>Quests reset every two days at 03:00 PM Pandanda Time / 00:00 AM CET!</ANSWER>
+    </QUESTION>	
+	<QUESTION>
+        <TITLE>join Project Pandanda's Discord server?</TITLE>
+        <SUBTITLE>Discord Server</SUBTITLE>
+        <ANSWER>You can join our server by clicking on the button below!</ANSWER>
+    </QUESTION>
+    <QUESTION>
+        <TITLE>ignore or report another player?</TITLE>
+        <SUBTITLE>Ignoring and Reporting Players</SUBTITLE>
+        <ANSWER>The report system is not functional! Please contact our staff on the Discord Server and submit a ticket!</ANSWER>
+    </QUESTION>
+    <QUESTION>
+        <TITLE>reset my password?</TITLE>
+        <SUBTITLE>Resetting Account Password</SUBTITLE>
+        <ANSWER>The reset password system is not functional! Please contact our staff on the Discord Server and submit a ticket!</ANSWER>
+    </QUESTION>	
+    <QUESTION>
+        <TITLE>Rules</TITLE>
+        <SUBTITLE>Project Pandanda Rules</SUBTITLE>
+        <ANSWER>We do not tolerate bad language and discussion of inappropriate topics. This includes swearing, dating chat, bullying and general disrespectful behavior towards other players. In addition it is not appropriate to discuss drug, alcohol, sex and racial topics. Players found not obeying this rule will be banned and repeated offenses will result in permanent banning.
+Play it safe by never sharing your real name, address, phone number, email address, or passwords with anyone online.
+Players may not use third party programs or create any programs that enable cheating in Project Pandanda. Use of such programs will result in permanent banning.</ANSWER>
+    </QUESTION>
+    <QUESTION>
+        <TITLE>Contact Support</TITLE>
+        <SUBTITLE>Contacting Support</SUBTITLE>
+		<ANSWER>We are always working to make Project Pandanda a better place. If you have found a bug, want to report a player, suggest an idea, or have other questions about the game, please join our Discord Server. Your help will make Project Pandanda better for everyone!</ANSWER>    
+	</QUESTION>
+	<QUESTION>
+        <TITLE>Outfit System</TITLE>
+        <SUBTITLE>Outfit System</SUBTITLE>
+		<ANSWER>The outfit system is not yet implemented in the User Panel. However, you can still store and wear your saved outfits by using these commands in the chat.
+• !outfit list - View all your saved outfits
+• !outfit add MyOutfit - Save your current outfit, where "MyOutfit" can be any name of your choice
+• !outfit wear MyOutfit - Wear your saved outfit
+• !outfit remove MyOutfit - Remove your saved outfit
+You can save up to 5 outfits, but if you are a VIP Panda, you can save up to 10!</ANSWER>    
+	</QUESTION>    
+</FAQ>
