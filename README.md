@@ -4,7 +4,7 @@ This website is just a quick proof of concept to show off a few little mods for 
 
 ---
 
-### What is Included Here
+### What is Included
 - Retro looking web page, with fullscreen.
 - Bigger chat box.
 - Lit-up darkroom.
